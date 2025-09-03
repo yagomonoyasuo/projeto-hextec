@@ -1,0 +1,240 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #f1f1f1;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.header {
+    background-color: #1f1f1f;
+    padding: 20px 0;
+    border-bottom: 2px solid #2c2c2c;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #00ffcc;
+}
+
+.navigation a {
+    margin-left: 20px;
+    color: #ccc;
+    transition: color 0.3s;
+}
+
+.navigation a:hover {
+    color: #00ffcc;
+}
+
+.menu-mobile {
+    display: none;
+    background: none;
+    font-size: 24px;
+    color: #00ffcc;
+    border: none;
+}
+
+/* Banner */
+.banner {
+    background: url('../img/banner-gamer.jpg') no-repeat center center/cover;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.banner .container {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.banner h1 {
+    font-size: 36px;
+    color: #ffffff;
+}
+
+.banner p {
+    margin: 15px 0;
+    font-size: 18px;
+    color: #ccc;
+}
+
+.btn-banner {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #00ffcc;
+    color: #121212;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.btn-banner:hover {
+    background-color: #00ccb3;
+}
+
+/* Seções */
+section {
+    padding: 60px 0;
+}
+
+.sobre, .contato {
+    background-color: #1a1a1a;
+    border-top: 2px solid #2a2a2a;
+    border-bottom: 2px solid #2a2a2a;
+}
+
+.sobre h2, .produtos h2, .contato h2 {
+    margin-bottom: 20px;
+    color: #00ffcc;
+}
+
+/* Produtos */
+.grid-produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.produto {
+    background-color: #1f1f1f;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.produto:hover {
+    transform: translateY(-5px);
+}
+
+.produto img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.produto h3 {
+    color: #00ffcc;
+    margin-bottom: 10px;
+}
+
+.produto p {
+    color: #ccc;
+}
+
+/* Contato */
+.contato ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.contato li {
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
+/* Footer */
+.footer {
+    background-color: #1f1f1f;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    color: #777;
+    border-top: 2px solid #2a2a2a;
+}
+
+/* Responsivo */
+@media only screen and (max-width: 717px) {
+	#openMenu, #closeMenu {
+		/* Retorna a visibilidade padrão. */
+		display: block;
+	}
+
+	#openMenu {
+		/* Espaço a esquerda será preenchido automaticamente
+		   colocando os itens a direita. */
+		margin-left: auto;
+	}
+
+	#closeMenu {
+		/* Torna a posição do elemento fixa. */
+		position: fixed;
+
+		/* Dispõe o elemento a 15px da esquerda. */
+		right: 15px;
+
+		/* Dispõe o elemento a 15px do topo. */
+		top: 15px;
+	}
+
+	nav {
+		/* Torna a posição do elemento fixa. */
+		position: fixed;
+
+		/* Ocupa 100% da largura da tela de exibição. */
+		width: 100vw;
+
+		/* Ocupa 100% da altura da tela de exibição. */
+		height: 100vh;
+
+		/* Cor em RGB, mais transparência. */
+		background: rgba(255, 255, 255, 0.8);
+
+		/* Dispõe os itens em coluna. */
+		flex-direction: column;
+
+		/* Alinha os itens na horizontal. */
+		align-items: center;
+
+		/* Alinha os itens na vertical. */
+		justify-content: center;
+
+		/* Remove a margem externa de todos os lados do elemento. */
+		margin: 0;
+
+		/* Oculta o elemento. */
+		display: none;
+
+		/* Invisivel */
+		opacity: 0;
+
+		/* Velocidade de transição de um estado para outro. */
+		transition: 0.3s;
+	}
+
+	nav a {
+		/* Margem de todos os lados. */
+		margin: 3%;
+	}
+}
