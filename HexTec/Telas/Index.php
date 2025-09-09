@@ -57,8 +57,8 @@ $result = mysqli_query($conexao, "SELECT * FROM produtos");
                     <?php while($produto = mysqli_fetch_assoc($result)): ?>
                     <li>
                         <article class="produto">
-                            <figure class="produto-imagem">
-                                <img src="<?= htmlspecialchars($produto['imagem']) ?>" alt="<?= htmlspecialchars($produto['nome']) ?>">
+                            <figure>
+                                <img class="produto-imagem" src="<?= htmlspecialchars($produto['imagem']) ?>" alt="<?= htmlspecialchars($produto['nome']) ?>">
                                     <figcaption>
                                         <h3><?= htmlspecialchars($produto['nome']) ?></h3>
                                     </figcaption>
