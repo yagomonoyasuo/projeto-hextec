@@ -58,7 +58,7 @@ $result = mysqli_query($conexao, "SELECT * FROM produtos");
                     <li>
                         <article class="produto">
                             <figure>
-                                <img class="produto-imagem" src="<?= htmlspecialchars($produto['imagem']) ?>" alt="<?= htmlspecialchars($produto['nome']) ?>">
+                                <img class="produto img" src="<?= htmlspecialchars($produto['imagem']) ?>" alt="<?= htmlspecialchars($produto['nome']) ?>">
                                     <figcaption>
                                         <h3><?= htmlspecialchars($produto['nome']) ?></h3>
                                     </figcaption>
@@ -98,3 +98,4 @@ $result = mysqli_query($conexao, "SELECT * FROM produtos");
     <script src="assets/js/script.js"></script>
 </body>
 </html>
+
