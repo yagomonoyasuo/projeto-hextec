@@ -67,7 +67,7 @@ $result = mysqli_query($conexao, "SELECT * FROM produtos");
             cursor: pointer;
         }
         .form-produto button:hover {
-            background: #00ccb3;
+            background: #01e2c8ff;
         }
     </style>
 </head>
