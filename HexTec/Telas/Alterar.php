@@ -75,7 +75,7 @@ $result = mysqli_query($conexao, "SELECT * FROM produtos");
 
 <header class="header">
     <div class="container">
-        <a href="index.php" class="logo">Hextec</a>
+        <a href="home.php" class="logo">Hextec</a>
     </div>
 </header>
 
@@ -116,3 +116,4 @@ $result = mysqli_query($conexao, "SELECT * FROM produtos");
 
 </body>
 </html>
+
