@@ -1,3 +1,34 @@
+<?php
+session_start();
+include 'Conexao.php'; // inclui a conexão com o banco
+
+if(isset($_POST['enviar'])){
+    $nome = $_POST['nome'];
+    $senha = $_POST['senha'];
+
+    // Prepared statement para evitar SQL Injection
+    $stmt = $conn->prepare("SELECT * FROM usuario WHERE nome = ? AND senha = ?");
+    $stmt->bind_param("ss", $nome, $senha);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+
+    if($resultado->num_rows > 0){
+        // Usuário encontrado
+        $_SESSION['nome'] = $nome;
+        header("Location: alterar.php"); // redireciona para a página protegida
+        exit;
+    } else {
+        // Usuário ou senha incorretos
+        echo '<script>alert("Usuário e/ou senha incorretos!"); window.location="index.php";</script>';
+    }
+
+    $stmt->close();
+    $conn->close();
+} else {
+    echo 'Faça o login primeiro: <a href="index.php">aqui!</a>';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -6,15 +37,15 @@
     <title>Login conta</title>
     <link rel="stylesheet" href="../Styles/Style_CriarConta.css">
     <link rel="shortcut icon" type="image/x-icon" href="../Imagens/Logos/Logo-CafeDev.ico">
-      <script src="../Scripts/Script_CriarConta.js"></script>
+      <script src="../Scripts/script_login.js"></script>
+      <link rel="stylesheet" href="../Style/style_login.css">
   </head>
 
-  <body>
+  <body style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
 
     <section class="splash">
-    <img src="../Imagens/Logos/Logo-CafeDev.png" alt="Cafe Dev Logo">
+    <img src="../Imagens/hextec placeholder.png" alt="HexTec">
   </section>
-
 
     <main class="container">
     <section >
@@ -28,7 +59,7 @@
             <input type="text" placeholder="Digite seu nome de usuário" name="nome" id="nome" class="input">
 
             <label for="senha" class="label">Senha</label>
-            <input type="password" placeholder="Digite sua senha" name="senha" id="senha" class="input">
+            <input type="password" placeholder="Digite sua senha" name="senha" id="senha" class="input">  
 
             <hr color="#007acc" class="divider"></hr>
     
@@ -43,43 +74,12 @@
           </p>
 
           <p class="login">
-            Login: <a href="index.php">AQUI</a>
+            Criar conta: <a href="criar conta.php">AQUI</a>
           </p>
         </footer>
         </section>
       </section>
-
-      <section id="rightCadastro">
-        <img src="imagens/Logo-CafeDev.png" alt="Cafe Dev Logo" class="logo" />
-
-      </section>
-      </section>
-    </section>
   </body>
 
 </html>
-<?php
-
-session_start();
-    if(isset($_POST['login'])){
-        $user = $_POST['user'];
-        $senha = $_POST['senha'];
-        $email = $_POST['email'];
-//faz o banco vagabundo//
-        $sql = 'select *from usuario ="'.$user.'" and senha ="'.$senha.'" and email ="'.$email.'";';
-
-        if ($user=="admin" && $senha=="12345678etec"){
-           $_SESSION['user'] = $user;
-            header('location:alterar.php');
-
-        } else {
-            echo '<script>window.alert("usuário e/ou senha incorretos!");window.location="index.php";</script>';
-        }
-
-
-    } else {
-        echo 'faça o login primeiro: <a href="login.html">aqui!</a>';
-    }
-
-?>
 
