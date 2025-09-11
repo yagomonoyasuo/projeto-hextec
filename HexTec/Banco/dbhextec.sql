@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 02/09/2025 às 02:56
+-- Tempo de geração: 11/09/2025 às 07:04
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -40,7 +40,7 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`id`, `nome`, `preco`, `descricao`, `imagem`) VALUES
-(8, 'Mouse multilaser', 399.00, 'Mouse gamer de alta performance com design ergonômico.', '../Imagens/positivo.jpg'),
+(8, 'Mouse multi uso', 399.00, 'Mouse gamer de alta performance com design ergonômico', '../Imagens/positivo.jpg'),
 (9, 'Headset 7.1 Surround', 149.90, 'Headset com som surround e microfone de alta qualidade.', '../Imagens/headset.jpg'),
 (10, 'Mouse Gamer Attack Shark X11', 120.90, 'Mouse gamer com DPI ajustável e iluminação RGB.', '../Imagens/attack.jpg'),
 (11, 'Webcam Razer', 219.99, 'Webcam de alta definição com microfone embutido.', '../Imagens/webc.jpg'),
@@ -53,6 +53,26 @@ INSERT INTO `produtos` (`id`, `nome`, `preco`, `descricao`, `imagem`) VALUES
 (18, 'Mesa Digitalizadora WACOM Cintiq', 250.00, 'Mesa digitalizadora profissional para designers.', '../Imagens/mesa.jpg'),
 (19, 'Mouse Gamer Razer', 120.90, 'Mouse gamer de alta performance com iluminação RGB.', '../Imagens/mouseraz.jpg');
 
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(90) DEFAULT NULL,
+  `senha` varchar(90) DEFAULT NULL,
+  `email` varchar(90) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `nome`, `senha`, `email`) VALUES
+(1, 'admin', '12345678etec', 'admin@gmail.com');
+
 --
 -- Índices para tabelas despejadas
 --
@@ -64,6 +84,12 @@ ALTER TABLE `produtos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices de tabela `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT para tabelas despejadas
 --
 
@@ -72,6 +98,12 @@ ALTER TABLE `produtos`
 --
 ALTER TABLE `produtos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT de tabela `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
