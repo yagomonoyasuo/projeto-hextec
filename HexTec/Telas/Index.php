@@ -384,7 +384,7 @@ if(isset($_POST['enviar'])){
     $stmt->close();
     $conn->close();
 } else {
-    echo 'Faça o login primeiro: <a href="index.php">aqui!</a>';
+    echo 'Faça o login primeiro: <a href="index.php">aqui!!</a>';
 }
 
 ?>
