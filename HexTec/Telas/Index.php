@@ -339,7 +339,7 @@ label, input {
 
             <hr color="#007acc" class="divider"></hr>
     
-            <input type="submit" name="enviar" formaction="Home.php" value="enviar" class="input create" style="display: flex; align-items: center; justify-content: center; text-align: center;">
+            <input type="submit" name="enviar"  value="enviar" class="input create" style="display: flex; align-items: center; justify-content: center; text-align: center;">
             <!-- Quando for fazer o back-end, remover o "formaction" -->
           </form>
            <p class="terms">
@@ -357,19 +357,16 @@ label, input {
 </html>
 <?php
 
-include("conexao.php");
+include("Conexao.php");
 
 $result = mysqli_query($conexao, "SELECT * FROM produtos");
-
-session_start();
-include 'Conexao.php'; // inclui a conexão com o banco
 
 if(isset($_POST['enviar'])){
     $nome = $_POST['nome'];
     $senha = $_POST['senha'];
 
     // Prepared statement para evitar SQL Injection
-    $stmt = $conn->prepare("SELECT * FROM usuario WHERE nome = ? AND senha = ?");
+    $stmt = $conexao->prepare("SELECT * FROM usuario WHERE nome = ? AND senha = ?");
     $stmt->bind_param("ss", $nome, $senha);
     $stmt->execute();
     $resultado = $stmt->get_result();
@@ -377,7 +374,7 @@ if(isset($_POST['enviar'])){
     if($resultado->num_rows > 0){
         // Usuário encontrado
         $_SESSION['nome'] = $nome;
-        header("Location: alterar.php"); // redireciona para a página protegida
+        header("Location: Alterar.php"); // redireciona para a página protegida
         exit;
     } else {
         // Usuário ou senha incorretos
