@@ -1,3 +1,36 @@
+<?php
+
+include("Conexao.php");
+
+$result = mysqli_query($conexao, "SELECT * FROM usuario");
+
+if(isset($_POST['enviar'])){
+    $nome = $_POST['nome'];
+    $senha = $_POST['senha'];
+
+    // Prepared statement para evitar SQL Injection
+    $stmt = $conexao->prepare("SELECT * FROM usuario WHERE nome = ? AND senha = ?");
+    $stmt->bind_param("ss", $nome, $senha);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+
+    if($nome== "admin" && $senha=="12345678etec"){
+        // Usuário encontrado
+        $_SESSION['nome'] = $nome;
+        header("Location: Alterar.php"); // redireciona para a página protegida
+        exit;
+    } else {
+        // Usuário ou senha incorretos
+        echo '<script>alert("Usuário e/ou senha incorretos!"); window.location="index.php";</script>';
+    }
+
+    $stmt->close();
+    $conexao->close();
+} else {
+    echo 'Faça o login primeiro: <a href="index.php">aqui!!</a>';
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -355,36 +388,3 @@ label, input {
       </section>
   </body>
 </html>
-<?php
-
-include("Conexao.php");
-
-$result = mysqli_query($conexao, "SELECT * FROM produtos");
-
-if(isset($_POST['enviar'])){
-    $nome = $_POST['nome'];
-    $senha = $_POST['senha'];
-
-    // Prepared statement para evitar SQL Injection
-    $stmt = $conexao->prepare("SELECT * FROM usuario WHERE nome = ? AND senha = ?");
-    $stmt->bind_param("ss", $nome, $senha);
-    $stmt->execute();
-    $resultado = $stmt->get_result();
-
-    if($resultado->num_rows > 0){
-        // Usuário encontrado
-        $_SESSION['nome'] = $nome;
-        header("Location: Alterar.php"); // redireciona para a página protegida
-        exit;
-    } else {
-        // Usuário ou senha incorretos
-        echo '<script>alert("Usuário e/ou senha incorretos!"); window.location="index.php";</script>';
-    }
-
-    $stmt->close();
-    $conn->close();
-} else {
-    echo 'Faça o login primeiro: <a href="index.php">aqui!!</a>';
-}
-
-?>
