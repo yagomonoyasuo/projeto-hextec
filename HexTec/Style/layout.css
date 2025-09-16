@@ -183,17 +183,6 @@ section {
     border-top: 2px solid #2a2a2a;
 }
 
-/* Responsivo */
-@media only screen and (max-width: 717px) {
-	#openMenu, #closeMenu {
-    display: none;
-    background: none;
-    font-size: 28px;
-    color: #00ffcc;
-    border: none;
-    cursor: pointer;
-}
-
 /* Estilo da nav quando aberta no mobile */
 @media only screen and (max-width: 717px) {
     .navigation {
