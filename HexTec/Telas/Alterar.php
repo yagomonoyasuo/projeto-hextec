@@ -36,6 +36,10 @@ $result = mysqli_query($conexao, "SELECT * FROM produtos");
     <title>Alterar Produtos - Hextec</title>
     <link rel="stylesheet" href="assets/css/layout.css">
     <style>
+        body{
+            background-color: #050505ff;
+            color: #00ffcc;
+        }
         .form-produto {
             background: #1f1f1f;
             padding: 20px;
@@ -56,6 +60,12 @@ $result = mysqli_query($conexao, "SELECT * FROM produtos");
             width: 100%;
             margin-top: 5px;
             padding: 8px;
+            background-color: #000;
+            color: #00ffcc;
+            
+        }
+        .form-produto input:hover {
+            border-color: #01e2c8ff;
         }
         .form-produto button {
             margin-top: 10px;
@@ -68,20 +78,23 @@ $result = mysqli_query($conexao, "SELECT * FROM produtos");
         }
         .form-produto button:hover {
             background: #01e2c8ff;
+            border-color: #01e2c8ff;
+
+        }
+        .hextec {
+            font-size: 50px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
 <header class="header">
-    <div class="container">
-        <a href="home.php" class="logo">Hextec</a>
-    </div>
 </header>
 
 <section class="produtos" id="produtos">
     <div class="container">
-        <h2>Alterar Produtos</h2>
+        <h2 class="hextec">Alterar Produtos</h2>
 
         <?php while ($produto = mysqli_fetch_assoc($result)): ?>
         <form class="form-produto" method="post" enctype="multipart/form-data">
@@ -111,6 +124,9 @@ $result = mysqli_query($conexao, "SELECT * FROM produtos");
 <footer class="footer">
     <div class="container">
         <p>&copy; 2025 Hextec - Todos os direitos reservados.</p>
+    </div>
+    <div >
+        <a href="home.php" ><p> Voltar ao Hextec </p></a>
     </div>
 </footer>
 
