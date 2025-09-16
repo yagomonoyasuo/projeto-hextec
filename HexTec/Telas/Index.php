@@ -19,10 +19,34 @@ if(isset($_POST['enviar'])){
         $_SESSION['nome'] = $nome;
         header("Location: Alterar.php"); // redireciona para a página protegida
         exit;
+
     } else {
         // Usuário ou senha incorretos
         echo '<script>alert("Usuário e/ou senha incorretos!"); window.location="index.php";</script>';
     }
+
+    $sql = "SELECT id, nome, email, senha FROM usuario";
+      $result = $conexao->query($sql);
+
+      $usuarios = []; // array para guardar os usuários
+
+      if ($result->num_rows > 0) {
+          while ($row = $result->fetch_assoc()) {
+              // adiciona cada usuário no array
+              $usuarios[] = $row;
+          }
+      }
+
+      // Agora você pode trabalhar com $usuarios no PHP
+      // Exemplo: verificar se um nome existe
+      foreach ($usuarios as $u) {
+          if ($u['nome'] === $nome && $u['senha'] === $senha) {
+              // achou o usuário
+              $_SESSION['nome'] = $u['nome'];
+              header("Location: Home.php");
+              exit;
+          }
+      }
 
     $stmt->close();
     $conexao->close();
@@ -379,7 +403,7 @@ label, input {
           </p>
 
           <p class="login">
-            Criar conta: <a href="criar conta.php">AQUI</a>
+            Criar conta: <a href="Criar_Conta.php">AQUI</a>
           </p>
         </main>
         </section>
