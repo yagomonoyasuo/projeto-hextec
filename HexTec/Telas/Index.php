@@ -381,7 +381,7 @@ label, input {
 
     <main class="container">
     <section>
-        <h1 class="welcome">CRIE SUA CONTA!</h1>
+        <h1 class="welcome">Faça login!</h1>
 
         <section id="formulario">
           <form name="cad" action="" method="POST">
@@ -394,7 +394,7 @@ label, input {
 
             <hr color="#007acc" class="divider"></hr>
     
-            <input type="submit" name="enviar"  value="enviar" class="input create" style="display: flex; align-items: center; justify-content: center; text-align: center;">
+            <input type="submit" name="enviar"  value="Enviar" class="input create" style="display: flex; align-items: center; justify-content: center; text-align: center;">
             <!-- Quando for fazer o back-end, remover o "formaction" -->
           </form>
            <p class="terms">
@@ -410,3 +410,4 @@ label, input {
       </section>
   </body>
 </html>
+
